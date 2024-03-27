@@ -14,7 +14,7 @@ class MealDetails extends StatelessWidget {
           "Food Guide",
           style: TextStyle(fontFamily: semibold),
         ),
-        backgroundColor: Color.fromARGB(255, 247, 168, 144),
+        backgroundColor: Color(0xFFFF6536),
         centerTitle: true,
       ),
       backgroundColor: Color.fromARGB(255, 255, 235, 235),

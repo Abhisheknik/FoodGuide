@@ -30,7 +30,6 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
     ProductsController controller =
@@ -42,7 +41,7 @@ class _HomeState extends State<Home> {
         title: _isSearching
             ? TextField(
                 onSubmitted: (value) async {
-                  print(searchController.text);
+                  // print(searchController.text);
                   await controller.fetchSearch(searchController.text);
                   controller
                       .fetchMealsDetails(controller.meals!.meals![0].strMeal);
@@ -124,8 +123,8 @@ class _HomeState extends State<Home> {
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
-                            mainAxisSpacing: 6.0,
-                            crossAxisSpacing: 6.0,
+                            mainAxisSpacing: 8.0,
+                            crossAxisSpacing: 8.0,
                             childAspectRatio: 0.9,
                           ),
                           itemCount: controller.categories!.categories!.length,
@@ -136,7 +135,7 @@ class _HomeState extends State<Home> {
                                   top: 10,
                                   right: 10,
                                   left: 10,
-                                  bottom: 10), // Adjust padding as needed
+                                  bottom: 0), // Adjust padding as needed
                               child: GestureDetector(
                                 onTap: () {
                                   controller.fetchMeals(controller.categories!
@@ -166,7 +165,8 @@ class _HomeState extends State<Home> {
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsets.all(10),
+                                      padding:
+                                          EdgeInsets.only(top: 0, bottom: 0),
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
@@ -188,9 +188,8 @@ class _HomeState extends State<Home> {
                                                     .categories![index]
                                                     .strCategoryThumb
                                                     .toString(),
-                                                width: width * 0.9,
-                                                height: 100,
-                                                fit: BoxFit.fill,
+                                                width: double.infinity,
+                                                fit: BoxFit.cover,
                                               ),
                                             ),
                                           ),
@@ -206,36 +205,6 @@ class _HomeState extends State<Home> {
                                               color: Colors.black,
                                             ),
                                           ),
-                                          // Center(
-                                          //   child: Text(
-                                          //     controller
-                                          //                 .categories!
-                                          //                 .categories![index]
-                                          //                 .strCategoryDescription
-                                          //                 .toString()
-                                          //                 .length >
-                                          //             50
-                                          //         ? controller
-                                          //             .categories!
-                                          //             .categories![index]
-                                          //             .strCategoryDescription
-                                          //             .toString()
-                                          //             .substring(0,
-                                          //                 55) // Limiting to the first 50 characters
-                                          //         : controller
-                                          //             .categories!
-                                          //             .categories![index]
-                                          //             .strCategoryDescription
-                                          //             .toString(),
-                                          //     textAlign: TextAlign
-                                          //         .center, // Center align the text
-                                          //     style: TextStyle(
-                                          //       fontSize: 9,
-                                          //       fontFamily: regular,
-                                          //       color: Colors.black,
-                                          //     ),
-                                          //   ),
-                                          // ),
                                         ],
                                       ),
                                     ),
@@ -257,7 +226,7 @@ class _HomeState extends State<Home> {
           FloatingActionButton(
             onPressed: () async {
               await controller.fetchRandom();
-              print(controller.random);
+              // print(controller.random);
               var mealId = controller.random!.meals![0].idMeal;
 
               await controller.fetchMealsDetails(mealId);

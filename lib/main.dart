@@ -1,5 +1,6 @@
 import 'package:apis/controller/product_controller.dart';
 import 'package:apis/views/home/home.dart';
+import 'package:apis/views/home/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        home: Home(),
+        home: SplashScreen(),
+        // home: Home(),
         debugShowCheckedModeBanner: false,
       ),
     );

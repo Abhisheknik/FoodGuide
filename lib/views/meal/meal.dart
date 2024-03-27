@@ -11,7 +11,13 @@ class MealsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Menu Card"),
+        title: Text(
+          "Food Guide",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1.5,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Color(0xFFFF6536),
         elevation: 0,
@@ -68,13 +74,10 @@ class MealsScreen extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     ClipRRect(
-                                      borderRadius: BorderRadius.circular(8),
                                       child: Image.network(
                                         controller
                                             .meals!.meals![index].strMealThumb
                                             .toString(),
-                                        width: 100,
-                                        height: 100,
                                         fit: BoxFit.fill,
                                       ),
                                     ),
